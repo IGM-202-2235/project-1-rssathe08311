@@ -4,7 +4,7 @@
 
 ### Student Info
 
--   Name: YOUR NAME
+-   Name: Reva Sathe
 -   Section: ##
 
 ## Game Design
