@@ -5,7 +5,7 @@
 ### Student Info
 
 -   Name: Reva Sathe
--   Section: ##
+-   Section: 02
 
 ## Game Design
 
