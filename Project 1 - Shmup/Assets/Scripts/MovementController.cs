@@ -48,7 +48,7 @@ public class MovementController : MonoBehaviour
         if (direction != Vector3.zero)
         {
             //Set the vehicle's rotation to match the direction
-            transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, direction * (Mathf.PI/2) );
         }
     }
 
