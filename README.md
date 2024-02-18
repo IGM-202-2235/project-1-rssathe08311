@@ -9,15 +9,16 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: My assets will be veiwed from the side, similar to mario or other side scrolling games. 
+-   Camera Movement: The camera will stay static.
+-   Player Health:I plan to impliment a health bar with a max health value of 100, though different monsters you collide with will detract a unique amount of health depending on their type.
+-   End Condition: The game ends either by getting hit enough to where your health is 0 or by defeating a certain number of monsters, this number has yet to be determined.
+-   Scoring: Points are earned by successfully killing monsters.
 
 ### Game Description
 
 _A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+This game is a simple shoot em up game similar to asteroids where you play as Dannie(name subject to change) as she fights off waves of mosnters using power purely made up of spite.
 
 ### Controls
 
@@ -30,7 +31,7 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+For this game I plan to hand draw all the sprites as well as a background. I also plan to impliment a sort of power up that is dependent on the amount of time that has passed in order to use it that will make battling monsters easier until it runs out. 
 
 ## Sources
 
