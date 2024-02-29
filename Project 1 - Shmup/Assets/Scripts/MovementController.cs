@@ -45,11 +45,22 @@ public class MovementController : MonoBehaviour
         // “Draw” this vehicle at that position
         transform.position = objectPosition;
 
+        if(direction.x > 0)
+        {
+            transform.rotation = Quaternion.LookRotation(-Vector3.back, Vector3.up);
+        }
+        else if(direction.x < 0)
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.back, Vector3.up);
+        }
+
+        /*
         if (direction != Vector3.zero)
         {
             //Set the vehicle's rotation to match the direction
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction * (Mathf.PI/2) );
         }
+        */
     }
 
     void ScreenWrap()
