@@ -38,15 +38,21 @@ public class CollisionManager : MonoBehaviour
 
         foreach (var sprite in sprites)
         {
-            sprite.spriteRenderer.color = Color.white;
+            if(sprite.spriteRenderer != null)
+            {
+                sprite.spriteRenderer.color = Color.white;
+            }
         }
 
         for (int i = 1; i < sprites.Count; i++)
         {
-            if (AABBCollisionCheck(sprites[0], sprites[i]))
+            if (sprites[i].spriteRenderer != null)
             {
-                sprites[0].spriteRenderer.color = Color.red;
-                sprites[i].spriteRenderer.color = Color.red;
+                if (AABBCollisionCheck(sprites[0], sprites[i]))
+                {
+                    sprites[0].spriteRenderer.color = Color.red;
+                    sprites[i].spriteRenderer.color = Color.red;
+                }
             }
 
         }
@@ -65,8 +71,8 @@ public class CollisionManager : MonoBehaviour
             sprites.RemoveAt(indicesToRemove[i]);
         }
 
-        // Add new sprites from the spawner
-        foreach (var newSprite in spawner.sprites)
+        //Update sprites list with new sprites
+        foreach (SpriteInfo newSprite in spawner.sprites)
         {
             if (!sprites.Contains(newSprite))
             {
