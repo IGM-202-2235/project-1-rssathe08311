@@ -40,7 +40,7 @@ For this game I plan to hand draw all the sprites as well as a background. I als
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+As of checkpoint 3 I have noticed that my collisions with the enemy tend to get buggy the longer the program runs, this is something that I am working on fixing though the cause of this error is unknown as of right now.
 
 ### Requirements not completed
 
