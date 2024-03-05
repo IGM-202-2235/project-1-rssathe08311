@@ -12,6 +12,8 @@ public class HudManager : MonoBehaviour
 
     [SerializeField] Slider healthSlider;
 
+    [SerializeField] CollisionManager collisionManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class HudManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthSlider.value = 20;
+        healthSlider.value = collisionManager.playerHealth;
 
         scoreText.text = string.Format(k_SCORE_STR, healthSlider.value);
     }

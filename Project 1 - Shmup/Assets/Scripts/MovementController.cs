@@ -32,7 +32,7 @@ public class MovementController : MonoBehaviour
     {
         //do checks for object position here to make it stay within bounds, wrap the movement - make it a method that you pass a vecotor into :)))))
 
-        ScreenWrap();
+        //ScreenWrap();
 
         //Velocity is direction * speed * deltaTime
         velocity = direction * speed * Time.deltaTime;

@@ -21,6 +21,8 @@ public class CollisionManager : MonoBehaviour
     float totalCamHeight;
     float totalCamWidth;
 
+    public int playerHealth = 100;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class CollisionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        List<int> indicesToRemove = new List<int>();
 
         foreach (var sprite in sprites)
         {
@@ -52,12 +55,16 @@ public class CollisionManager : MonoBehaviour
                 {
                     sprites[0].spriteRenderer.color = Color.red;
                     sprites[i].spriteRenderer.color = Color.red;
+
+                    sprites[i].transform.position = new Vector3(-totalCamWidth - 1, 0, 0);
+
+                    playerHealth -= 20;
                 }
             }
 
         }
 
-        List<int> indicesToRemove = new List<int>();
+        
         for (int i = 1; i < sprites.Count; i++)
         {
             if (sprites[i] == null || sprites[i].gameObject == null)
@@ -67,7 +74,7 @@ public class CollisionManager : MonoBehaviour
         }
         for (int i = indicesToRemove.Count - 1; i >= 0; i--)
         {
-            Destroy(sprites[i]);
+            Destroy(sprites[indicesToRemove[i]]);
             sprites.RemoveAt(indicesToRemove[i]);
         }
 

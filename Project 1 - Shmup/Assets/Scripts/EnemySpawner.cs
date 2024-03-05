@@ -85,7 +85,22 @@ public class EnemySpawner : MonoBehaviour
     {
         float yPos = Random.Range(-5f, 3f);
         Vector3 position = new Vector3(totalCamWidth, yPos, 0f);
-        enemies.Add(Instantiate(creaturePrefab, position, Quaternion.identity));
-        sprites.Add(Instantiate(creatureSprite, position, Quaternion.identity));
+
+        //enemies.Add(Instantiate(creaturePrefab, position, Quaternion.identity));
+        SpriteInfo newCreature = Instantiate(creatureSprite, position, Quaternion.identity);
+        sprites.Add(newCreature);
+        enemies.Add(newCreature.gameObject);
+    }
+
+    public void DestroyEnemy(int index)
+    {
+        Destroy(enemies[index]);
+        enemies.RemoveAt(index);
+        // Remove corresponding SpriteInfo from the sprites list
+        if (index < sprites.Count)
+        {
+            Destroy(sprites[index].gameObject);
+            sprites.RemoveAt(index);
+        }
     }
 }
