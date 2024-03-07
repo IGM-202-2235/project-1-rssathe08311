@@ -10,11 +10,23 @@ public class InputController : MonoBehaviour
 
     [SerializeField] MovementController movementController;
 
+    [SerializeField]  WeaponController weaponController;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         inputDirection = context.ReadValue<Vector2>();
 
 
         movementController.Direction = inputDirection;
+    }
+
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            weaponController.Shoot();
+            Debug.Log("shot");
+        }
+
     }
 }
