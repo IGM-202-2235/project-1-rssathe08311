@@ -6,7 +6,7 @@ public class MovementController : MonoBehaviour
 {
     Vector3 objectPosition = Vector3.zero;
 
-    Vector3 direction = Vector3.up;
+    Vector3 direction = Vector3.zero;
 
     Vector3 velocity = Vector3.zero;
 
@@ -65,16 +65,25 @@ public class MovementController : MonoBehaviour
 
     void ScreenWrap()
     {
-        float totalCamHeight = (cameraObject.orthographicSize * 2f) / 2;
-        float totalCamWidth = (totalCamHeight * cameraObject.aspect);
+        float totalCamHeight = cameraObject.orthographicSize;
+        float totalCamWidth = totalCamHeight * cameraObject.aspect;
 
-        if ((objectPosition.y >= totalCamHeight) || (objectPosition.y <= (totalCamHeight * -1)))
+        if (objectPosition.y > totalCamHeight)
         {
-            objectPosition.y *= -1;
+            objectPosition.y = -totalCamHeight;
         }
-        if ((objectPosition.x >= totalCamWidth) || (objectPosition.x <= (totalCamWidth * -1)))
+        else if (objectPosition.y < -totalCamHeight)
         {
-            objectPosition.x *= -1;
+            objectPosition.y = totalCamHeight;
+        }
+
+        if (objectPosition.x > totalCamWidth)
+        {
+            objectPosition.x = -totalCamWidth;
+        }
+        else if (objectPosition.x < -totalCamWidth)
+        {
+            objectPosition.x = totalCamWidth;
         }
     }
 

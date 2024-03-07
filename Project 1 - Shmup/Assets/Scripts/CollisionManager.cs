@@ -8,13 +8,14 @@ public class CollisionManager : MonoBehaviour
 {
     //list of sprites with spriteinfo class
     [SerializeField] List<SpriteInfo> sprites = new List<SpriteInfo>();//player should be the first index for simplicities sake
-
-    //[SerializeField] bool aabbCol;
     [SerializeField] SpriteInfo player;
 
     [SerializeField] TextMesh instruction;
 
     [SerializeField] EnemySpawner spawner;
+
+    [SerializeField] WeaponController weaponController;
+    [SerializeField] List<SpriteInfo> bullets = new List<SpriteInfo>();
 
     //camera
     [SerializeField] Camera cameraObject;
@@ -23,6 +24,11 @@ public class CollisionManager : MonoBehaviour
 
     public int playerHealth = 100;
 
+    public int score = 0;
+
+
+    //stronger enemies have a hit counter so like they only die after 3 collisions, have a counter, can have tint to show this injury
+    //1 really stong monster at the end that moves hella slow, defeating it will end the game
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +45,19 @@ public class CollisionManager : MonoBehaviour
     {
         List<int> indicesToRemove = new List<int>();
 
-        foreach (var sprite in sprites)
+        foreach (SpriteInfo sprite in sprites)
         {
             if(sprite.spriteRenderer != null)
             {
                 sprite.spriteRenderer.color = Color.white;
+            }
+        }
+
+        foreach (SpriteInfo bullet in bullets)
+        {
+            if (bullet.spriteRenderer != null)
+            {
+                bullet.spriteRenderer.color = Color.white;
             }
         }
 
@@ -64,6 +78,38 @@ public class CollisionManager : MonoBehaviour
 
         }
 
+        for(int b = 0; b < bullets.Count; b++)
+        {
+            for (int i = 1; i < sprites.Count; i++)
+            {
+                if (sprites[i].spriteRenderer != null)
+                {
+                    if (AABBCollisionCheck(bullets[b], sprites[i]))
+                    {
+                        bullets[b].spriteRenderer.color = Color.red;
+                        sprites[i].spriteRenderer.color = Color.red;
+
+                        sprites[i].transform.position = new Vector3(-totalCamWidth - 1, 0, 0);
+
+                        weaponController.DestroyBullet(bullets[b]);
+
+                        bullets.RemoveAt(b);
+                        b--;
+                        score += 10;
+                        break;
+
+
+                    }
+                }
+                else
+                {
+                    sprites.RemoveAt(i);
+                    i--;
+                }
+
+            }
+        }
+
         
         for (int i = 1; i < sprites.Count; i++)
         {
@@ -76,6 +122,15 @@ public class CollisionManager : MonoBehaviour
         {
             Destroy(sprites[indicesToRemove[i]]);
             sprites.RemoveAt(indicesToRemove[i]);
+        }
+
+
+        //adds objects to the lists respectively
+        foreach(SpriteInfo bullet in weaponController.spriteInfos)
+        {
+            if (!bullets.Contains(bullet)){
+                bullets.Add(bullet);
+            }
         }
 
         //Update sprites list with new sprites

@@ -27,6 +27,6 @@ public class HudManager : MonoBehaviour
     {
         healthSlider.value = collisionManager.playerHealth;
 
-        scoreText.text = string.Format(k_SCORE_STR, healthSlider.value);
+        scoreText.text = string.Format(k_SCORE_STR, collisionManager.score);
     }
 }

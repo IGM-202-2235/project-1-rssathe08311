@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] SpriteRenderer bulletPrefab;
+
+    [SerializeField] SpriteInfo bulletInfo;
 
     [SerializeField] Transform fireOrigin;
 
@@ -12,13 +15,34 @@ public class WeaponController : MonoBehaviour
 
     bool shootPossible = true;
 
-    List<SpriteRenderer> bullets = new List<SpriteRenderer>();
+    public List<SpriteRenderer> bullets = new List<SpriteRenderer>();
 
-    IEnumerator BulletTime(SpriteRenderer bullet)
+    public List<SpriteInfo> spriteInfos = new List<SpriteInfo>();
+
+    IEnumerator BulletTime(SpriteRenderer bullet, SpriteInfo spriteInfo)
     {
         yield return new WaitForSeconds(4f);
-        Destroy(bullet.gameObject);
-        bullets.Remove(bullet);
+
+        if (bullet != null && spriteInfo != null) 
+        {
+            spriteInfos.Remove(spriteInfo);
+            bullets.Remove(bullet);
+            Destroy(spriteInfo.gameObject);
+            Destroy(bullet.gameObject);
+        }
+        
+    }
+
+    public void DestroyBullet(SpriteInfo bullet)
+    {
+        if(bullet != null)
+        {
+            bullets.Remove(bullet.spriteRenderer);
+            spriteInfos.Remove(bullet);
+            Destroy(bullet.spriteRenderer.gameObject);
+            Destroy(bullet.gameObject);
+        }
+        
     }
 
     public void Shoot()
@@ -28,10 +52,11 @@ public class WeaponController : MonoBehaviour
             return;
         }
 
-        SpriteRenderer bullet = Instantiate(bulletPrefab, fireOrigin.position, fireOrigin.rotation);
-        bullets.Add(bullet);
+        SpriteInfo bullet = Instantiate(bulletInfo, fireOrigin.position, fireOrigin.rotation);
+        bullets.Add(bullet.spriteRenderer);
+        spriteInfos.Add(bullet);
         StartCoroutine(CanShoot());
-        StartCoroutine(BulletTime(bullet));
+        StartCoroutine(BulletTime(bullet.spriteRenderer, bullet));
     }
 
     // Update is called once per frame
@@ -46,7 +71,10 @@ public class WeaponController : MonoBehaviour
     {
         for(int i = 0; i < bullets.Count; i++)
         {
-            bullets[i].transform.Translate(Vector3.right * speed * Time.deltaTime);
+            if (bullets[i] != null)
+            {
+                bullets[i].transform.Translate(Vector3.right * speed * Time.deltaTime);
+            }
         }
     }
 }

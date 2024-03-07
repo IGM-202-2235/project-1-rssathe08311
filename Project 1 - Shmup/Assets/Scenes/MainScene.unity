@@ -473,7 +473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 0.25}
-  m_AnchoredPosition: {x: 45.99997, y: 27.053013}
+  m_AnchoredPosition: {x: 45.99997, y: 27.052994}
   m_SizeDelta: {x: -101.14, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231953988
@@ -1236,8 +1236,11 @@ MonoBehaviour:
   player: {fileID: 2003294971}
   instruction: {fileID: 0}
   spawner: {fileID: 1619420984}
+  weaponController: {fileID: 2003294973}
+  bullets: []
   cameraObject: {fileID: 519420031}
   playerHealth: 100
+  score: 0
 --- !u!1 &1741453187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,8 +1500,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1870581456038840405, guid: 9ae2bbadc5a0086488a9cdfa51578cf6, type: 3}
+  bulletInfo: {fileID: 7416426270136588217, guid: 9ae2bbadc5a0086488a9cdfa51578cf6, type: 3}
   fireOrigin: {fileID: 836259429}
   speed: 4
+  bullets: []
+  spriteInfos: []
+--- !u!114 &2003294975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3421006560619643276, guid: 57701876d0668854fb38cd0f1069ea46, type: 3}
+  m_PrefabInstance: {fileID: 2182384249680557955}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003294966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c6ebed3dd9ff34cbee9324a4cea391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2131130429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1741,7 @@ PrefabInstance:
     - target: {fileID: 2368932327265573809, guid: 57701876d0668854fb38cd0f1069ea46, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3421006560619643276, guid: 57701876d0668854fb38cd0f1069ea46, type: 3}
+      objectReference: {fileID: 2003294975}
     - target: {fileID: 2368932327265573809, guid: 57701876d0668854fb38cd0f1069ea46, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
