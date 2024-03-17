@@ -13,6 +13,10 @@ public class SpriteInfo : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
+    public int health = 0;
+    public int damage = 0;
+    public int points = 0;
+
     // Start is called before the first frame update
     void Start()
     {

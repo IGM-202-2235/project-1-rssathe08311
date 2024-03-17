@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 5920757436659684613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.6343399, y: -0.07201859, z: 0.032121502}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5033665732572199173}
@@ -133,7 +133,7 @@ MonoBehaviour:
   min: {x: 0, y: 0, z: 0}
   max: {x: 0, y: 0, z: 0}
   radius: 0
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 3460191142537818818}
 --- !u!212 &3460191142537818818
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemyTwoSpawner : MonoBehaviour
 {
     [SerializeField]
     GameObject creaturePrefab;
@@ -28,9 +27,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float speed;
 
     //Countdown variables
-    static float duration = 2f;
+    static float duration = 6f;
     float time = duration;
-
 
 
 
@@ -57,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
         velocity = direction * speed * Time.deltaTime;
 
-        if(enemies.Count > 0)
+        if (enemies.Count > 0)
         {
             for (int i = (enemies.Count - 1); i >= 0; i--)
             {
