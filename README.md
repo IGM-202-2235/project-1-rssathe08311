@@ -9,16 +9,15 @@
 
 ## Game Design
 
--   Camera Orientation: My assets will be veiwed from the side, similar to mario or other side scrolling games. 
--   Camera Movement: The camera will stay static.
--   Player Health:I plan to impliment a health bar with a max health value of 100, though different monsters you collide with will detract a unique amount of health depending on their type.
--   End Condition: The game ends either by getting hit enough to where your health is 0 or by defeating a certain number of monsters, this number has yet to be determined.
--   Scoring: Points are earned by successfully killing monsters.
+-   Camera Orientation: The camera is positioned to display the game environment as a flat, horizontal plane from left to right.
+-   Camera Movement: The camera will stay static, while enemies will move onto the screen.
+-   Player Health: Health is represented by a health bar with a maximum value of 100, through colliding with different monsters a different amount of health will be detracted from the max until your health is at 0 which then will cause the game to end.
+-   End Condition: The only way to end the game is by getting hit by enough monsters to where your health is 0 or lower.
+-   Scoring: You are able to score points by killing the different monsters, different monsters are worth different amounts of points. The smallest monsters are worth 10 points, the larger ones are worth 15 points, and then the largest monsters are worth 100 points.
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
-This game is a simple shoot em up game similar to asteroids where you play as Dannie(name subject to change) as she fights off waves of mosnters using power purely made up of spite.
+Skin Brawler is a simple asteriods-type shoot-em-up game where you play as a super-powered individual as she fights waves of skin monsters. 
 
 ### Controls
 
@@ -35,14 +34,12 @@ All visual assets other than the UI are hand drawn by me, this includes the play
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+All art assets are hand drawn by me.
+Font: Yuki Boku by Kinuta Font Factory, https://fonts.google.com/specimen/Yuji+Boku
 
 ## Known Issues
 
-As of checkpoint 3 I have noticed that my collisions with the enemy tend to get buggy the longer the program runs, this is something that I am working on fixing though the cause of this error is unknown as of right now.
+There is an error that will occasionally pop up, but it does not affect gameplay.
 
-### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
 
