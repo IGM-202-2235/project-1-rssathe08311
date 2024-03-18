@@ -12,12 +12,15 @@ public class WeaponController : MonoBehaviour
     [SerializeField] Transform fireOrigin;
 
     [SerializeField] float speed = 4;
+    [SerializeField] CollisionManager collisionManager;
 
     bool shootPossible = true;
 
     public List<SpriteRenderer> bullets = new List<SpriteRenderer>();
 
     public List<SpriteInfo> spriteInfos = new List<SpriteInfo>();
+
+    
 
     IEnumerator BulletTime(SpriteRenderer bullet, SpriteInfo spriteInfo)
     {
@@ -47,7 +50,7 @@ public class WeaponController : MonoBehaviour
 
     public void Shoot()
     {
-        if(!shootPossible)
+        if(!shootPossible || !enabled)
         {
             return;
         }
@@ -69,12 +72,30 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        for(int i = 0; i < bullets.Count; i++)
+        if (collisionManager != null && collisionManager.playerHealth > 0)
         {
-            if (bullets[i] != null)
+            for (int i = 0; i < bullets.Count; i++)
             {
-                bullets[i].transform.Translate(Vector3.right * speed * Time.deltaTime);
+                if (bullets[i] != null)
+                {
+                    bullets[i].transform.Translate(Vector3.right * speed * Time.deltaTime);
+                }
             }
         }
+        else
+        {
+
+            foreach (var bullet in spriteInfos)
+            {
+                if (bullet != null)
+                {
+                    DestroyBullet(bullet);
+                }
+            }
+            // Disable the WeaponController if collisionManager or playerHealth is null or <= 0
+            enabled = false;
+        }
+
+
     }
 }

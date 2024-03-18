@@ -57,7 +57,7 @@ public class CollisionManager : MonoBehaviour
 
             foreach (SpriteInfo sprite in sprites)
             {
-                if (sprite.spriteRenderer != null)
+                if (sprite != null && sprite.spriteRenderer != null)
                 {
                     sprite.spriteRenderer.color = Color.white;
                 }
@@ -65,7 +65,7 @@ public class CollisionManager : MonoBehaviour
 
             foreach (SpriteInfo bullet in bullets)
             {
-                if (bullet.spriteRenderer != null)
+                if (bullet != null && bullet.spriteRenderer != null)
                 {
                     bullet.spriteRenderer.color = Color.white;
                 }
@@ -73,7 +73,7 @@ public class CollisionManager : MonoBehaviour
 
             for (int i = 1; i < sprites.Count; i++)
             {
-                if (sprites[i].spriteRenderer != null)
+                if (sprites[i] != null && sprites[i].spriteRenderer != null)
                 {
                     if (AABBCollisionCheck(sprites[0], sprites[i]))
                     {
@@ -92,7 +92,7 @@ public class CollisionManager : MonoBehaviour
             {
                 for (int i = 1; i < sprites.Count; i++)
                 {
-                    if (sprites[i].spriteRenderer != null)
+                    if (sprites[i] != null && sprites[i].spriteRenderer != null)
                     {
                         if (AABBCollisionCheck(bullets[b], sprites[i]))
                         {
@@ -224,7 +224,11 @@ public class CollisionManager : MonoBehaviour
 
         for(int i = 1; i < sprites.Count; i++)
         {
-            sprites[i].transform.position = new Vector3(-totalCamWidth - 1, 0, 0);
+            if(sprites[i] != null && sprites[i].spriteRenderer != null)
+            {
+                sprites[i].transform.position = new Vector3(-totalCamWidth - 1, 0, 0);
+            }
+            
         }
 
         

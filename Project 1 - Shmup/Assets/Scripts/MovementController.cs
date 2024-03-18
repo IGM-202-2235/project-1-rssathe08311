@@ -14,6 +14,11 @@ public class MovementController : MonoBehaviour
 
     [SerializeField] Camera cameraObject;
 
+    float totalCamHeight;
+    float totalCamWidth;
+
+    [SerializeField] CollisionManager collisionManager;
+
     public Vector3 Direction
     {
         set { direction = value.normalized; }
@@ -25,14 +30,24 @@ public class MovementController : MonoBehaviour
         // Grab the GameObject’s starting position
         objectPosition = transform.position;
 
+        totalCamHeight = cameraObject.orthographicSize;
+        totalCamWidth = totalCamHeight * cameraObject.aspect;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //do checks for object position here to make it stay within bounds, wrap the movement - make it a method that you pass a vecotor into :)))))
+        if(collisionManager.playerHealth <= 0)
+        {
+            enabled = false;
+        }
+        else
+        {
+            objectPosition.x = Mathf.Clamp(objectPosition.x, -totalCamWidth, totalCamWidth);
+            objectPosition.y = Mathf.Clamp(objectPosition.y, -totalCamHeight, totalCamHeight);
+        }
 
-        //ScreenWrap();
+
 
         //Velocity is direction * speed * deltaTime
         velocity = direction * speed * Time.deltaTime;
@@ -63,29 +78,6 @@ public class MovementController : MonoBehaviour
         */
     }
 
-    void ScreenWrap()
-    {
-        float totalCamHeight = cameraObject.orthographicSize;
-        float totalCamWidth = totalCamHeight * cameraObject.aspect;
-
-        if (objectPosition.y > totalCamHeight)
-        {
-            objectPosition.y = -totalCamHeight;
-        }
-        else if (objectPosition.y < -totalCamHeight)
-        {
-            objectPosition.y = totalCamHeight;
-        }
-
-        if (objectPosition.x > totalCamWidth)
-        {
-            objectPosition.x = -totalCamWidth;
-        }
-        else if (objectPosition.x < -totalCamWidth)
-        {
-            objectPosition.x = totalCamWidth;
-        }
-    }
 
 
 }
