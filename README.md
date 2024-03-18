@@ -23,15 +23,15 @@ This game is a simple shoot em up game similar to asteroids where you play as Da
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: up arrow key/'w' key
+    -   Down: down arrow key/'s' key
+    -   Left: left arrow key/'a' key
+    -   Right: right arrow key/'d' key
+-   Fire: space bar
 
-## You Additions
+## You Additions/Makt it my own
 
-For this game I plan to hand draw all the sprites as well as a background. I also plan to impliment a sort of power up that is dependent on the amount of time that has passed in order to use it that will make battling monsters easier until it runs out. 
+All visual assets other than the UI are hand drawn by me, this includes the player sprite, all three monster sprites, player bullets, and the background. Another aspect of uniqueness is a high level monster that has the ability to instantly kill the player as well as reward a large amount of points. This is in addition to the two required enemies that the player fights against.
 
 ## Sources
 
