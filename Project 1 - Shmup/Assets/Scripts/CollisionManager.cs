@@ -111,7 +111,10 @@ public class CollisionManager : MonoBehaviour
 
                             bullets.RemoveAt(b);
 
-                            score += sprites[i].points;
+                            if (sprites[i].health <= 0)
+                            {
+                                score += sprites[i].points;
+                            }
                             break;
 
 
