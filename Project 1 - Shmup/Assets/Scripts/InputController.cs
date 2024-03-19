@@ -25,7 +25,6 @@ public class InputController : MonoBehaviour
         if (context.performed)
         {
             weaponController.Shoot();
-            Debug.Log("shot");
         }
 
     }
